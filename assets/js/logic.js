@@ -2,6 +2,8 @@ var startButton = document.getElementById('start');
 var submitButton = document.getElementById('submit');
 var correctAudio = document.getElementById('correct');
 var incorrectAudio = document.getElementById('incorrect');
+var startScreen = document.getElementById('start-screen');
+var questionsContainer = document.getElementById('questions');
 var currentQuestionIndex = 0;
 var time = 0;
 var timerInterval;
@@ -52,16 +54,12 @@ function startQuiz() {
       choicesContainer.appendChild(choiceBtn);
     }
 }
-    // Hide the start screen and show the questions
-    var startScreen = document.getElementById('start-screen');
-    var questionsContainer = document.getElementById('questions');
-
     startScreen.classList.add('hide');
     questionsContainer.classList.remove('hide');
     }
 
 // Check answer
-function checkAnswer(event) {
+    function checkAnswer(event) {
     var userChoiceIndex = parseInt(event.target.getAttribute('data-index'));
     var currentQuestion = questions[currentQuestionIndex];
   
@@ -83,3 +81,25 @@ function checkAnswer(event) {
       endGame();
     }
   }
+  // Function to end the game
+function endGame() {
+    clearInterval(timerInterval);
+    var questionsContainer = document.getElementById('questions');
+    var endScreen = document.getElementById('end-screen');
+    questionsContainer.classList.add('hide');
+    endScreen.classList.remove('hide');
+  
+    // show Final score
+    document.getElementById('final-score').textContent = time;
+  }
+  
+  // Save the score
+  function saveScore() {
+    var initials = document.getElementById('initials').value;
+  
+    if (initials) {
+      var newScore = {
+        initials: initials,
+        score: time,
+      };
+      
