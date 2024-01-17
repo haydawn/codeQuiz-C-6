@@ -1,3 +1,4 @@
+
 var startButton = document.getElementById('start');
 var submitButton = document.getElementById('submit');
 var correctAudio = document.getElementById('correct');
