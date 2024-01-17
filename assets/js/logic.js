@@ -56,7 +56,7 @@ function startQuiz() {
 }
     startScreen.classList.add('hide');
     questionsContainer.classList.remove('hide');
-    }
+    
 
 // Check answer
     function checkAnswer(event) {
@@ -103,3 +103,19 @@ function endGame() {
         score: time,
       };
       
+
+        // Save scores to local storage
+    localStorage.setItem('highscores', JSON.stringify(highscores));
+
+    // Get scores from local storage
+    var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+
+    // Add the new score to the highscores array sort 
+    highscores.push(newScore);
+    highscores.sort(function (a, b) {
+      return b.score - a.score;
+    });
+  } else {
+    document.getElementById('feedback').textContent = 'Please enter your initials.';
+  }
+}
