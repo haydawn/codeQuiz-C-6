@@ -110,9 +110,6 @@ function saveScore() {
     // Save scores to local storage
     localStorage.setItem('highscores', JSON.stringify(highscores));
 
-    // Get scores from local storage
-    var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
-
     // Add the new score to the highscores array sort 
     highscores.push(newScore);
     highscores.sort(function (a, b) {
@@ -122,3 +119,6 @@ function saveScore() {
     document.getElementById('feedback').textContent = 'Please enter your initials.';
   }
 }
+
+// Get scores from local storage
+var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
