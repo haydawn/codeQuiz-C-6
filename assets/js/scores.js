@@ -3,4 +3,20 @@ document.getElementById("submit").addEventListener("click", function () {
     var initials = document.getElementById("initials").value;
     var score = time; 
 
+    if (initials) {
+        // Get highscores from local storage or create an empty array
+        var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+        var newScore = {
+          initials: initials,
+          score: score,
+        };
+        // Add the new score 
+      highscores.push(newScore);
+      highscores.sort(function (a, b) {
+        return b.score - a.score;
+      });
   
+      // Save new highscores to local storage
+      localStorage.setItem("highscores", JSON.stringify(highscores));
+    }
+});
