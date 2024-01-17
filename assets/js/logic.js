@@ -52,3 +52,34 @@ function startQuiz() {
       choicesContainer.appendChild(choiceBtn);
     }
 }
+    // Hide the start screen and show the questions
+    var startScreen = document.getElementById('start-screen');
+    var questionsContainer = document.getElementById('questions');
+
+    startScreen.classList.add('hide');
+    questionsContainer.classList.remove('hide');
+    }
+
+// Check answer
+function checkAnswer(event) {
+    var userChoiceIndex = parseInt(event.target.getAttribute('data-index'));
+    var currentQuestion = questions[currentQuestionIndex];
+  
+    if (userChoiceIndex === currentQuestion.correctAnswer) {
+      document.getElementById('feedback').textContent = 'Correct!';
+      correctAudio.play();
+    } else {
+      time -= 10;
+      document.getElementById('feedback').textContent = 'Incorrect!';
+      incorrectAudio.play();
+    }
+    
+  
+    //Show the next question
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      showQuestion();
+    } else {
+      endGame();
+    }
+  }
