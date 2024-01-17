@@ -20,3 +20,9 @@ document.getElementById("submit").addEventListener("click", function () {
       localStorage.setItem("highscores", JSON.stringify(highscores));
     }
 });
+
+// Clear highscores
+document.getElementById("clear").addEventListener("click", function () {
+    localStorage.removeItem("highscores");
+    document.getElementById("highscores").innerHTML = "";
+});
