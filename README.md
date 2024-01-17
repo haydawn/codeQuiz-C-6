@@ -37,7 +37,9 @@ The following animation demonstrates the application functionality:
 
 
 ## References
-[]()
+[Javascript.info](https://javascript.info/)
+[W3Schools](https://www.w3schools.com/js/)
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
 
 ## Deployed Project Link 
